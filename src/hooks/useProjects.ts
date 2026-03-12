@@ -4,6 +4,7 @@ export interface Project {
   id: string;
   title: string;
   category: 'completed' | 'ongoing' | 'upcoming';
+  type: string;
   location?: string;
   area?: string;
   year?: string;

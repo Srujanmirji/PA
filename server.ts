@@ -24,12 +24,19 @@ db.exec(`
   )
 `);
 
+// Ensure 'type' column exists (migration)
+try {
+  db.exec("ALTER TABLE projects ADD COLUMN type TEXT NOT NULL DEFAULT 'Residential'");
+} catch (e) {
+  // Column already exists or other error
+}
+
 // Insert default projects if the table is empty
 const count = db.prepare('SELECT COUNT(*) as count FROM projects').get() as { count: number };
 if (count.count === 0) {
   const insert = db.prepare(`
-    INSERT INTO projects (id, title, category, location, area, year, stage, completion, image, description)
-    VALUES (@id, @title, @category, @location, @area, @year, @stage, @completion, @image, @description)
+    INSERT INTO projects (id, title, category, type, location, area, year, stage, completion, image, description)
+    VALUES (@id, @title, @category, @type, @location, @area, @year, @stage, @completion, @image, @description)
   `);
 
   const defaultProjects = [
@@ -37,6 +44,7 @@ if (count.count === 0) {
       id: '1',
       title: 'The Horizon Villa',
       category: 'completed',
+      type: 'Residential',
       location: 'Beverly Hills, CA',
       area: '8,500 sq ft',
       year: '2023',
@@ -49,6 +57,7 @@ if (count.count === 0) {
       id: '2',
       title: 'Nexus Commercial Complex',
       category: 'completed',
+      type: 'Commercial',
       location: 'Downtown Metro',
       area: '45,000 sq ft',
       year: '2022',
@@ -61,6 +70,7 @@ if (count.count === 0) {
       id: '3',
       title: 'Aura Modern Apartments',
       category: 'completed',
+      type: 'Residential',
       location: 'Westside District',
       area: '120,000 sq ft',
       year: '2024',
@@ -73,6 +83,7 @@ if (count.count === 0) {
       id: '4',
       title: 'Zenith Corporate HQ',
       category: 'ongoing',
+      type: 'Commercial',
       location: null,
       area: null,
       year: null,
@@ -85,6 +96,7 @@ if (count.count === 0) {
       id: '5',
       title: 'Lumina Residences',
       category: 'ongoing',
+      type: 'Residential',
       location: null,
       area: null,
       year: null,
@@ -97,6 +109,7 @@ if (count.count === 0) {
       id: '6',
       title: 'Oasis Eco Resort',
       category: 'upcoming',
+      type: 'Institutional',
       location: null,
       area: null,
       year: null,
@@ -135,18 +148,19 @@ async function startServer() {
 
   app.post('/api/projects', (req, res) => {
     try {
-      const { title, category, location, area, year, stage, completion, image, description } = req.body;
+      const { title, category, type, location, area, year, stage, completion, image, description } = req.body;
       const id = uuidv4();
       
       const insert = db.prepare(`
-        INSERT INTO projects (id, title, category, location, area, year, stage, completion, image, description)
-        VALUES (@id, @title, @category, @location, @area, @year, @stage, @completion, @image, @description)
+        INSERT INTO projects (id, title, category, type, location, area, year, stage, completion, image, description)
+        VALUES (@id, @title, @category, @type, @location, @area, @year, @stage, @completion, @image, @description)
       `);
       
       insert.run({
         id,
         title,
         category,
+        type: type || 'Residential',
         location: location || null,
         area: area || null,
         year: year || null,

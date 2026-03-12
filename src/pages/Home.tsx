@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Building2, Home as HomeIcon, PenTool, Ruler, Star, Quote } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useProjects } from '../hooks/useProjects';
+import BeforeAfterSlider from '../components/BeforeAfterSlider';
+import StatsCounter from '../components/StatsCounter';
+import ProjectMap from '../components/ProjectMap';
 
 export default function Home() {
   const { projects } = useProjects();
@@ -66,83 +69,130 @@ export default function Home() {
     <div className="bg-[#050505] text-white">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <motion.div 
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.4 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute inset-0 z-0"
+        >
           <img 
             src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
             alt="Modern Architecture" 
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-[#050505]/60 to-[#050505]"></div>
-        </div>
+        </motion.div>
         
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20 pointer-events-none">
-          <motion.h1 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl md:text-8xl font-black font-heading tracking-tighter mb-6 uppercase"
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.2
+                }
+              }
+            }}
           >
-            <span className="text-white">PRABHAKAR</span><br />
-            <span className="text-gradient-cyan">ASSOCIATES</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-300 mb-10 font-light max-w-3xl mx-auto tracking-wide"
-          >
-            Architectural Design &bull; Building Planning &bull; Construction &bull; Interior Design
-          </motion.p>
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center pointer-events-auto"
-          >
-            <Link to="/projects" className="relative group overflow-hidden bg-white text-black px-8 py-4 uppercase tracking-widest font-bold transition-all">
-              <span className="relative z-10">View Projects</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#00f0ff] to-[#7000ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">View Projects</span>
-            </Link>
-            <Link to="/contact" className="glass-panel text-white px-8 py-4 uppercase tracking-widest font-bold hover:bg-white/10 transition-all border border-white/20 hover:border-[#ff003c]">
-              Get Consultation
-            </Link>
+            <motion.h1 
+              variants={{
+                hidden: { opacity: 0, y: 50, rotateX: 45 },
+                visible: { opacity: 1, y: 0, rotateX: 0 }
+              }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-4xl sm:text-6xl md:text-8xl font-black font-heading tracking-tighter mb-6 uppercase leading-[0.9] perspective-1000"
+            >
+              <span className="text-white block">PRABHAKAR</span>
+              <span className="text-gradient-cyan block">ASSOCIATES</span>
+            </motion.h1>
+            
+            <motion.p 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-10 font-light max-w-3xl mx-auto tracking-wide px-4"
+            >
+              Architectural Design &bull; Building Planning &bull; Construction &bull; Interior Design
+            </motion.p>
+
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, scale: 0.8 },
+                visible: { opacity: 1, scale: 1 }
+              }}
+              className="flex flex-col sm:flex-row gap-6 justify-center pointer-events-auto"
+            >
+              <Link to="/projects" className="relative group overflow-hidden bg-white text-black px-8 py-4 uppercase tracking-widest font-bold transition-all rounded-sm">
+                <span className="relative z-10">View Projects</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#00f0ff] to-[#7000ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">View Projects</span>
+              </Link>
+              <Link to="/contact" className="glass-panel text-white px-8 py-4 uppercase tracking-widest font-bold hover:bg-white/10 transition-all border border-white/20 hover:border-[#ff003c] rounded-sm">
+                Get Consultation
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        >
+          <span className="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-bold">Scroll</span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-white/50 to-transparent"></div>
+        </motion.div>
       </section>
 
       {/* Services Overview */}
       <section className="py-32 relative">
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#7000ff] rounded-full mix-blend-screen filter blur-[128px] opacity-20"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#00f0ff] rounded-full mix-blend-screen filter blur-[128px] opacity-20"></div>
-        </div>
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-black font-heading mb-4 uppercase tracking-tighter">
-              Our <span className="text-gradient-magenta">Expertise</span>
-            </h2>
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div className="max-w-2xl">
+              <motion.span 
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="text-[#ff003c] text-xs font-black uppercase tracking-[0.4em] mb-4 block"
+              >
+                Our Capabilities
+              </motion.span>
+              <h2 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter leading-none">
+                Crafting <span className="text-gradient-magenta">Excellence</span> In Every Detail
+              </h2>
+            </div>
+            <p className="text-gray-400 max-w-sm text-sm font-light leading-relaxed mb-2">
+              We provide comprehensive architectural solutions that blend artistic vision with technical precision.
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {services.map((service, index) => (
               <motion.div 
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glass-panel glass-panel-hover p-8 rounded-2xl group transition-all duration-300"
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`glass-panel glass-panel-hover p-8 rounded-2xl group transition-all duration-500 relative overflow-hidden ${
+                  index === 0 || index === 3 ? 'md:col-span-7' : 'md:col-span-5'
+                }`}
               >
-                <div className="mb-6 bg-white/5 w-16 h-16 rounded-xl flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full -translate-y-8 translate-x-8 group-hover:translate-y-0 group-hover:translate-x-0 transition-transform duration-500"></div>
+                
+                <div className="mb-8 bg-white/5 w-16 h-16 rounded-xl flex items-center justify-center border border-white/10 group-hover:scale-110 group-hover:border-[#00f0ff]/50 transition-all duration-500">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold font-heading mb-4 text-white uppercase tracking-wide">{service.title}</h3>
-                <p className="text-gray-400 mb-8 text-sm leading-relaxed">{service.description}</p>
-                <Link to={service.link} className="inline-flex items-center text-sm font-bold uppercase tracking-widest text-[#00f0ff] group-hover:text-white transition-colors">
-                  Learn More <ArrowRight size={16} className="ml-2" />
+                <h3 className="text-2xl font-black font-heading mb-4 text-white uppercase tracking-wide">{service.title}</h3>
+                <p className="text-gray-400 mb-8 text-sm leading-relaxed max-w-md">{service.description}</p>
+                <Link to={service.link} className="inline-flex items-center text-xs font-black uppercase tracking-widest text-[#00f0ff] group-hover:text-white transition-colors">
+                  Explore Service <ArrowRight size={14} className="ml-2 group-hover:translate-x-2 transition-transform" />
                 </Link>
               </motion.div>
             ))}
@@ -164,27 +214,44 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {featuredProjects.map((project, index) => (
               <motion.div 
                 key={project.id}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-2xl cursor-pointer"
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`group relative overflow-hidden rounded-2xl cursor-pointer ${
+                  index === 0 ? 'md:col-span-8 md:row-span-2' : 'md:col-span-4'
+                }`}
               >
                 <Link to={`/projects/${project.id}`}>
-                  <div className="aspect-[4/5] overflow-hidden">
+                  <div className={`${index === 0 ? 'aspect-[16/10]' : 'aspect-square'} overflow-hidden relative`}>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60 z-10 transition-opacity duration-500 group-hover:opacity-40"></div>
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                     />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/50 to-transparent p-8 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <span className="text-[#00f0ff] text-xs font-black uppercase tracking-widest mb-2">{project.category}</span>
-                    <h3 className="text-white text-2xl font-heading font-bold uppercase tracking-wide">{project.title}</h3>
+                    
+                    <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end">
+                      <motion.div
+                        initial={{ y: 20, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                      >
+                        <span className="px-3 py-1 bg-[#00f0ff]/20 text-[#00f0ff] border border-[#00f0ff]/30 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4 inline-block backdrop-blur-sm">
+                          {project.type}
+                        </span>
+                        <h3 className="text-white text-2xl md:text-3xl font-heading font-black uppercase tracking-tight mb-2 group-hover:text-[#00f0ff] transition-colors duration-300">
+                          {project.title}
+                        </h3>
+                        <p className="text-gray-400 text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                          View Details <ArrowRight size={12} className="group-hover:translate-x-2 transition-transform" />
+                        </p>
+                      </motion.div>
+                    </div>
                   </div>
                 </Link>
               </motion.div>
@@ -199,67 +266,169 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Transformation Section */}
+      <section className="py-32 bg-[#050505] relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00f0ff] rounded-full mix-blend-screen filter blur-[150px] opacity-[0.05]"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="text-[#00f0ff] text-xs font-black uppercase tracking-[0.4em] mb-4 block">Transformation</span>
+              <h2 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter leading-none mb-8">
+                From Vision <br /> To <span className="text-gradient-cyan">Reality</span>
+              </h2>
+              <p className="text-gray-400 text-lg font-light leading-relaxed mb-10">
+                Witness the evolution of spaces. We specialize in taking raw concepts and aging structures and breathing new life into them through innovative architectural interventions.
+              </p>
+              
+              <div className="space-y-6">
+                {[
+                  "Sustainable Material Selection",
+                  "Structural Integrity Optimization",
+                  "Modern Aesthetic Integration",
+                  "Functional Space Reimagining"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-4">
+                    <div className="w-6 h-6 rounded-full bg-[#00f0ff]/10 flex items-center justify-center border border-[#00f0ff]/20">
+                      <div className="w-2 h-2 rounded-full bg-[#00f0ff]"></div>
+                    </div>
+                    <span className="text-gray-300 font-medium uppercase tracking-widest text-xs">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="absolute -inset-4 bg-gradient-to-r from-[#00f0ff] to-[#7000ff] opacity-20 blur-2xl rounded-3xl"></div>
+              <BeforeAfterSlider 
+                beforeImage="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                afterImage="https://images.unsplash.com/photo-1600607687940-47a04b629571?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                beforeLabel="Initial Site"
+                afterLabel="Final Design"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <StatsCounter />
+        </div>
+      </section>
+
+      {/* Map Section */}
+      <section className="py-32 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <ProjectMap />
+        </div>
+      </section>
+
       {/* Work Process */}
       <section className="py-32 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-black font-heading mb-4 uppercase tracking-tighter">
-              Our <span className="text-gradient-purple">Process</span>
-            </h2>
+          <div className="flex flex-col md:flex-row justify-between items-center mb-24 gap-12">
+            <div className="max-w-xl">
+              <h2 className="text-4xl md:text-6xl font-black font-heading mb-6 uppercase tracking-tighter leading-none">
+                Our <span className="text-gradient-purple">Blueprint</span> For Success
+              </h2>
+              <p className="text-gray-400 text-lg font-light tracking-wide">
+                A systematic approach to turning your vision into a structural masterpiece.
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-            <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[#00f0ff] via-[#7000ff] to-[#ff003c] z-0 opacity-50"></div>
-            
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
             {processSteps.map((step, index) => (
-              <div key={index} className="relative z-10 text-center px-4 group">
-                <div className="w-24 h-24 mx-auto bg-[#111] border-2 border-[#333] group-hover:border-[#00f0ff] rounded-full flex items-center justify-center mb-8 text-3xl font-heading font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-500 group-hover:from-[#00f0ff] group-hover:to-[#7000ff] transition-all duration-300 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_30px_rgba(0,240,255,0.3)]">
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative z-10 p-8 bg-white/5 border border-white/10 rounded-2xl group hover:border-[#7000ff]/50 transition-all duration-500"
+              >
+                <div className="text-5xl font-heading font-black text-white/5 group-hover:text-[#7000ff]/20 transition-colors duration-500 mb-6">
                   {step.step}
                 </div>
-                <h3 className="text-xl font-heading font-bold mb-4 uppercase tracking-wide text-white">{step.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
-              </div>
+                <h3 className="text-xl font-heading font-black mb-4 uppercase tracking-wide text-white group-hover:text-[#7000ff] transition-colors">
+                  {step.title}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed font-light">
+                  {step.description}
+                </p>
+                <div className="mt-8 w-full h-[1px] bg-white/10 relative overflow-hidden">
+                  <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-transparent via-[#7000ff] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-32 bg-[#111] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#ffea00] rounded-full mix-blend-screen filter blur-[128px] opacity-10 pointer-events-none"></div>
+      <section className="py-32 bg-[#050505] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#ffea00] rounded-full mix-blend-screen filter blur-[150px] opacity-[0.03] pointer-events-none"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-black font-heading mb-4 uppercase tracking-tighter">
-              Client <span className="text-gradient-yellow">Testimonials</span>
-            </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light tracking-wide">
-              What our clients say about working with us.
-            </p>
+          <div className="flex flex-col md:flex-row justify-between items-center mb-24 gap-12">
+            <div className="max-w-xl">
+              <h2 className="text-4xl md:text-6xl font-black font-heading mb-6 uppercase tracking-tighter leading-none">
+                Voices of <span className="text-gradient-yellow">Satisfaction</span>
+              </h2>
+              <p className="text-gray-400 text-lg font-light tracking-wide">
+                We take pride in the relationships we build and the spaces we create.
+              </p>
+            </div>
+            <div className="flex gap-4">
+              <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/30 hover:text-[#ffea00] hover:border-[#ffea00] transition-all cursor-pointer">
+                <ArrowRight size={20} className="rotate-180" />
+              </div>
+              <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/30 hover:text-[#ffea00] hover:border-[#ffea00] transition-all cursor-pointer">
+                <ArrowRight size={20} />
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {testimonials.map((testimonial, index) => (
               <motion.div 
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glass-panel p-8 rounded-2xl relative"
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative group"
               >
-                <Quote size={48} className="absolute top-4 right-4 text-white/5" />
-                <div className="flex mb-6">
+                <div className="absolute -top-6 -left-6 text-8xl font-serif text-white/5 group-hover:text-[#ffea00]/10 transition-colors duration-500">“</div>
+                <div className="flex mb-8">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} size={16} className="text-[#ffea00] fill-[#ffea00] mr-1" />
+                    <Star key={i} size={14} className="text-[#ffea00] fill-[#ffea00] mr-1" />
                   ))}
                 </div>
-                <p className="text-gray-300 mb-8 italic leading-relaxed relative z-10">
-                  "{testimonial.text}"
+                <p className="text-gray-300 text-xl font-light leading-relaxed mb-10 relative z-10 italic">
+                  {testimonial.text}
                 </p>
-                <div>
-                  <h4 className="text-white font-bold font-heading uppercase tracking-widest">{testimonial.name}</h4>
-                  <p className="text-[#00f0ff] text-sm uppercase tracking-wider">{testimonial.role}</p>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-[1px] bg-[#ffea00]"></div>
+                  <div>
+                    <h4 className="text-white font-black font-heading uppercase tracking-widest text-sm">{testimonial.name}</h4>
+                    <p className="text-gray-500 text-[10px] uppercase tracking-[0.2em] font-bold">{testimonial.role}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
