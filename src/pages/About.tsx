@@ -12,33 +12,33 @@ export default function About() {
   return (
     <div className="bg-[#050505] text-white pt-24 min-h-screen">
       {/* Page Header */}
-      <section className="relative py-24 px-4 text-center overflow-hidden">
+      <section className="relative py-12 px-4 text-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#00f0ff]/10 to-transparent opacity-50"></div>
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative z-10 text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter mb-4"
+          className="relative z-10 text-3xl md:text-6xl font-black font-heading uppercase tracking-tighter mb-4"
         >
           About <span className="text-gradient-cyan">Us</span>
         </motion.h1>
         <div className="relative z-10 w-24 h-1 bg-gradient-to-r from-[#00f0ff] to-[#7000ff] mx-auto mb-6"></div>
-        <p className="relative z-10 text-gray-400 max-w-2xl mx-auto text-lg font-light tracking-wide">
+        <p className="relative z-10 text-gray-400 max-w-2xl mx-auto text-base sm:text-lg font-light tracking-wide">
           Shaping environments that inspire and function seamlessly.
         </p>
       </section>
 
       {/* Introduction */}
-      <section className="py-24 relative">
+      <section className="py-12 sm:py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-16 items-center">
             <div className="w-full md:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-black font-heading mb-6 uppercase tracking-wide">Our <span className="text-[#00f0ff]">Story</span></h2>
+              <h2 className="text-2xl md:text-4xl font-black font-heading mb-6 uppercase tracking-wide">Our <span className="text-[#00f0ff]">Story</span></h2>
               <div className="w-16 h-1 bg-[#00f0ff] mb-8"></div>
-              <p className="text-gray-400 mb-6 leading-relaxed text-lg font-light">
+              <p className="text-gray-400 mb-6 leading-relaxed text-base sm:text-lg font-light">
                 Founded with a vision to redefine modern architecture, Prabhakar Associates has grown into a premier design and construction firm. We believe that every space has a story to tell, and our mission is to craft narratives through innovative design and meticulous execution.
               </p>
-              <p className="text-gray-400 mb-6 leading-relaxed text-lg font-light">
+              <p className="text-gray-400 mb-6 leading-relaxed text-base sm:text-lg font-light">
                 Our approach is rooted in the belief that architecture should not only be visually stunning but also profoundly functional. We blend contemporary aesthetics with sustainable practices to create spaces that enhance the quality of life for those who inhabit them.
               </p>
             </div>
@@ -55,7 +55,7 @@ export default function About() {
       </section>
 
       {/* Stats */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-12 sm:py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-white/5 backdrop-blur-md border-y border-white/10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -69,7 +69,7 @@ export default function About() {
                 className="p-6 bg-white/5 rounded-2xl border border-white/10 hover:border-white/20 transition-colors"
               >
                 <div className="flex justify-center">{stat.icon}</div>
-                <h3 className="text-4xl font-black font-heading text-white mb-2">{stat.value}</h3>
+                <h3 className="text-3xl sm:text-4xl font-black font-heading text-white mb-2">{stat.value}</h3>
                 <p className="text-gray-400 uppercase tracking-widest text-xs font-bold">{stat.label}</p>
               </motion.div>
             ))}
@@ -78,7 +78,7 @@ export default function About() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="py-24">
+      <section className="py-12 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             <div className="bg-white/5 backdrop-blur-md border border-white/10 p-12 rounded-2xl shadow-2xl relative overflow-hidden group hover:border-[#00f0ff]/50 transition-colors duration-500">
@@ -95,7 +95,7 @@ export default function About() {
               <h3 className="text-2xl font-black font-heading mb-6 uppercase tracking-wide flex items-center">
                 <span className="w-8 h-1 bg-[#ff003c] mr-4"></span> Our Mission
               </h3>
-              <p className="text-gray-400 leading-relaxed text-lg font-light">
+              <p className="text-gray-400 leading-relaxed text-base sm:text-lg font-light">
                 To deliver exceptional architectural and construction services by fostering a culture of creativity, collaboration, and continuous improvement, ensuring every project exceeds client expectations.
               </p>
             </div>
@@ -104,7 +104,7 @@ export default function About() {
       </section>
 
       {/* Founder Section */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 sm:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-[#7000ff]/10 to-transparent opacity-30"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row-reverse gap-16 items-center">

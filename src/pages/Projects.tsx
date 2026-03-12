@@ -25,7 +25,7 @@ export default function Projects() {
   return (
     <div className="bg-[#050505] text-white pt-24 min-h-screen">
       {/* Page Header */}
-      <section className="relative py-24 px-4 text-center overflow-hidden">
+      <section className="relative py-12 px-4 text-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#00f0ff]/10 to-transparent opacity-50"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#00f0ff] rounded-full mix-blend-screen filter blur-[128px] opacity-10 pointer-events-none"></div>
         
@@ -33,12 +33,12 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative z-10 text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter mb-4"
+          className="relative z-10 text-3xl md:text-6xl font-black font-heading uppercase tracking-tighter mb-4"
         >
           Our <span className="text-gradient-cyan">Portfolio</span>
         </motion.h1>
         <div className="relative z-10 w-24 h-1 bg-gradient-to-r from-[#00f0ff] to-[#7000ff] mx-auto mb-6"></div>
-        <p className="relative z-10 text-gray-400 max-w-2xl mx-auto text-lg font-light tracking-wide">
+        <p className="relative z-10 text-gray-400 max-w-2xl mx-auto text-base sm:text-lg font-light tracking-wide">
           A showcase of our finest architectural endeavors, blending innovation with precision.
         </p>
       </section>
@@ -95,7 +95,7 @@ export default function Projects() {
           {/* Grid */}
           <motion.div 
             layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
           >
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project, index) => (
@@ -139,7 +139,7 @@ export default function Projects() {
                     </div>
                     <div className="p-6 relative">
                       <div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-[#00f0ff]/50 transition-all duration-500"></div>
-                      <h3 className="text-xl font-black font-heading mb-2 uppercase tracking-tight group-hover:text-[#00f0ff] transition-colors duration-300">{project.title}</h3>
+                      <h3 className="text-lg md:text-xl font-black font-heading mb-2 uppercase tracking-tight group-hover:text-[#00f0ff] transition-colors duration-300">{project.title}</h3>
                       <p className="text-gray-400 text-sm mb-6 line-clamp-2 font-light leading-relaxed group-hover:text-gray-300 transition-colors duration-300">{project.description}</p>
                       
                       <div className="flex flex-col gap-3 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
@@ -199,7 +199,7 @@ export default function Projects() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#7000ff]/10 to-transparent opacity-30"></div>
         <div className="absolute inset-0 bg-white/5 backdrop-blur-md border-t border-white/10"></div>
         <div className="relative z-10 max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-black font-heading mb-6 uppercase tracking-wide">Have a <span className="text-[#7000ff]">Vision?</span></h2>
+          <h2 className="text-2xl md:text-5xl font-black font-heading mb-6 uppercase tracking-wide">Have a <span className="text-[#7000ff]">Vision?</span></h2>
           <p className="text-gray-400 mb-10 text-lg font-light">
             Let's build something extraordinary together.
           </p>

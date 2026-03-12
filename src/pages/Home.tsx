@@ -68,7 +68,7 @@ export default function Home() {
   return (
     <div className="bg-[#050505] text-white">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-[90vh] sm:h-screen flex items-center justify-center overflow-hidden">
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.4 }}
@@ -104,7 +104,7 @@ export default function Home() {
                 visible: { opacity: 1, y: 0, rotateX: 0 }
               }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-4xl sm:text-6xl md:text-8xl font-black font-heading tracking-tighter mb-6 uppercase leading-[0.9] perspective-1000"
+              className="text-3xl sm:text-6xl md:text-8xl font-black font-heading tracking-tighter mb-4 sm:mb-6 uppercase leading-[0.9] perspective-1000"
             >
               <span className="text-white block">PRABHAKAR</span>
               <span className="text-gradient-cyan block">ASSOCIATES</span>
@@ -115,7 +115,7 @@ export default function Home() {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 }
               }}
-              className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-10 font-light max-w-3xl mx-auto tracking-wide px-4"
+              className="text-base sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-10 font-light max-w-3xl mx-auto tracking-wide px-4"
             >
               Architectural Design &bull; Building Planning &bull; Construction &bull; Interior Design
             </motion.p>
@@ -127,12 +127,12 @@ export default function Home() {
               }}
               className="flex flex-col sm:flex-row gap-6 justify-center pointer-events-auto"
             >
-              <Link to="/projects" className="relative group overflow-hidden bg-white text-black px-8 py-4 uppercase tracking-widest font-bold transition-all rounded-sm">
+              <Link to="/projects" className="relative group overflow-hidden bg-white text-black px-6 py-3 sm:px-8 sm:py-4 uppercase tracking-widest font-bold transition-all rounded-sm text-sm sm:text-base">
                 <span className="relative z-10">View Projects</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-[#00f0ff] to-[#7000ff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">View Projects</span>
               </Link>
-              <Link to="/contact" className="glass-panel text-white px-8 py-4 uppercase tracking-widest font-bold hover:bg-white/10 transition-all border border-white/20 hover:border-[#ff003c] rounded-sm">
+              <Link to="/contact" className="glass-panel text-white px-6 py-3 sm:px-8 sm:py-4 uppercase tracking-widest font-bold hover:bg-white/10 transition-all border border-white/20 hover:border-[#ff003c] rounded-sm text-sm sm:text-base">
                 Get Consultation
               </Link>
             </motion.div>
@@ -152,7 +152,7 @@ export default function Home() {
       </section>
 
       {/* Services Overview */}
-      <section className="py-32 relative">
+      <section className="py-16 sm:py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
             <div className="max-w-2xl">
@@ -163,7 +163,7 @@ export default function Home() {
               >
                 Our Capabilities
               </motion.span>
-              <h2 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter leading-none">
+              <h2 className="text-3xl md:text-6xl font-black font-heading uppercase tracking-tighter leading-none">
                 Crafting <span className="text-gradient-magenta">Excellence</span> In Every Detail
               </h2>
             </div>
@@ -201,11 +201,11 @@ export default function Home() {
       </section>
 
       {/* Featured Projects */}
-      <section className="py-32 bg-[#111]">
+      <section className="py-16 sm:py-32 bg-[#111]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div>
-              <h2 className="text-4xl md:text-5xl font-black font-heading uppercase tracking-tighter">
+              <h2 className="text-3xl md:text-5xl font-black font-heading uppercase tracking-tighter">
                 Featured <span className="text-gradient-cyan">Projects</span>
               </h2>
             </div>
@@ -267,7 +267,7 @@ export default function Home() {
       </section>
 
       {/* Transformation Section */}
-      <section className="py-32 bg-[#050505] relative overflow-hidden">
+      <section className="py-16 sm:py-32 bg-[#050505] relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00f0ff] rounded-full mix-blend-screen filter blur-[150px] opacity-[0.05]"></div>
         </div>
@@ -281,7 +281,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <span className="text-[#00f0ff] text-xs font-black uppercase tracking-[0.4em] mb-4 block">Transformation</span>
-              <h2 className="text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter leading-none mb-8">
+              <h2 className="text-3xl md:text-6xl font-black font-heading uppercase tracking-tighter leading-none mb-6 sm:mb-8">
                 From Vision <br /> To <span className="text-gradient-cyan">Reality</span>
               </h2>
               <p className="text-gray-400 text-lg font-light leading-relaxed mb-10">
@@ -339,11 +339,11 @@ export default function Home() {
       </section>
 
       {/* Work Process */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-16 sm:py-32 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-center mb-24 gap-12">
             <div className="max-w-xl">
-              <h2 className="text-4xl md:text-6xl font-black font-heading mb-6 uppercase tracking-tighter leading-none">
+              <h2 className="text-3xl md:text-6xl font-black font-heading mb-6 uppercase tracking-tighter leading-none">
                 Our <span className="text-gradient-purple">Blueprint</span> For Success
               </h2>
               <p className="text-gray-400 text-lg font-light tracking-wide">
@@ -381,13 +381,13 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-32 bg-[#050505] relative overflow-hidden">
+      <section className="py-16 sm:py-32 bg-[#050505] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#ffea00] rounded-full mix-blend-screen filter blur-[150px] opacity-[0.03] pointer-events-none"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-center mb-24 gap-12">
             <div className="max-w-xl">
-              <h2 className="text-4xl md:text-6xl font-black font-heading mb-6 uppercase tracking-tighter leading-none">
+              <h2 className="text-3xl md:text-6xl font-black font-heading mb-6 uppercase tracking-tighter leading-none">
                 Voices of <span className="text-gradient-yellow">Satisfaction</span>
               </h2>
               <p className="text-gray-400 text-lg font-light tracking-wide">
@@ -437,7 +437,7 @@ export default function Home() {
       </section>
 
       {/* About Preview */}
-      <section className="py-32 relative">
+      <section className="py-16 sm:py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-16 items-center">
             <div className="w-full md:w-1/2 relative">
@@ -449,7 +449,7 @@ export default function Home() {
               />
             </div>
             <div className="w-full md:w-1/2">
-              <h2 className="text-4xl md:text-5xl font-black font-heading mb-8 uppercase tracking-tighter">
+              <h2 className="text-3xl md:text-5xl font-black font-heading mb-6 sm:mb-8 uppercase tracking-tighter">
                 Designing the <span className="text-gradient-cyan">Future</span>
               </h2>
               <p className="text-gray-400 mb-6 leading-relaxed text-lg">

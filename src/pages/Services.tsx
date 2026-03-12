@@ -45,37 +45,37 @@ export default function Services() {
   return (
     <div className="bg-[#050505] text-white pt-24 min-h-screen">
       {/* Page Header */}
-      <section className="relative py-24 px-4 text-center overflow-hidden">
+      <section className="relative py-12 px-4 text-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#ff003c]/10 to-transparent opacity-50"></div>
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative z-10 text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter mb-4"
+          className="relative z-10 text-3xl md:text-6xl font-black font-heading uppercase tracking-tighter mb-4"
         >
           Our <span className="text-gradient-cyan">Services</span>
         </motion.h1>
         <div className="relative z-10 w-24 h-1 bg-gradient-to-r from-[#ff003c] to-[#00f0ff] mx-auto mb-6"></div>
-        <p className="relative z-10 text-gray-400 max-w-2xl mx-auto text-lg font-light tracking-wide">
+        <p className="relative z-10 text-gray-400 max-w-2xl mx-auto text-base sm:text-lg font-light tracking-wide">
           Comprehensive solutions from concept to completion.
         </p>
       </section>
 
       {/* Services List */}
-      <section className="py-24">
+      <section className="py-12 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-32">
+          <div className="space-y-20 sm:space-y-32">
             {services.map((service, index) => (
               <div 
                 key={service.id} 
                 id={service.id}
-                className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-16 items-center`}
+                className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-16 items-center`}
               >
                 <div className="w-full md:w-1/2">
-                  <div className="mb-6 bg-white/5 w-20 h-20 flex items-center justify-center rounded-2xl border border-white/10">{service.icon}</div>
-                  <h2 className="text-3xl md:text-4xl font-black font-heading mb-6 uppercase tracking-wide">{service.title}</h2>
+                  <div className="mb-6 bg-white/5 w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center rounded-2xl border border-white/10">{service.icon}</div>
+                  <h2 className="text-2xl md:text-4xl font-black font-heading mb-4 sm:mb-6 uppercase tracking-wide">{service.title}</h2>
                   <div className="w-16 h-1 mb-8" style={{ backgroundColor: service.color }}></div>
-                  <p className="text-gray-400 mb-8 leading-relaxed text-lg font-light">
+                  <p className="text-gray-400 mb-6 sm:mb-8 leading-relaxed text-base sm:text-lg font-light">
                     {service.description}
                   </p>
                   <ul className="space-y-4">
