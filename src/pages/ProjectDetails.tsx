@@ -42,7 +42,7 @@ export default function ProjectDetails() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-7xl font-black font-heading text-white uppercase tracking-tighter mb-4"
+              className="text-3xl sm:text-4xl md:text-7xl font-black font-heading text-white uppercase tracking-tighter mb-4"
             >
               {project.title}
             </motion.h1>
@@ -54,7 +54,7 @@ export default function ProjectDetails() {
       </section>
 
       {/* Project Content */}
-      <section className="py-24 relative">
+      <section className="py-12 sm:py-24 relative">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#7000ff] rounded-full mix-blend-screen filter blur-[128px] opacity-10 pointer-events-none"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -65,7 +65,7 @@ export default function ProjectDetails() {
           <div className="flex flex-col lg:flex-row gap-16">
             {/* Description */}
             <div className="w-full lg:w-2/3">
-              <h2 className="text-3xl font-black font-heading mb-8 uppercase tracking-tighter">Project <span className="text-gradient-cyan">Overview</span></h2>
+              <h2 className="text-2xl sm:text-3xl font-black font-heading mb-8 uppercase tracking-tighter">Project <span className="text-gradient-cyan">Overview</span></h2>
               <p className="text-gray-300 mb-6 leading-relaxed text-lg">
                 {project.description}
               </p>
@@ -93,7 +93,7 @@ export default function ProjectDetails() {
 
             {/* Specifications Sidebar */}
             <div className="w-full lg:w-1/3">
-              <div className="glass-panel p-8 rounded-2xl border border-white/10 sticky top-32">
+              <div className="glass-panel p-6 sm:p-8 rounded-2xl border border-white/10 lg:sticky lg:top-32">
                 <h3 className="text-xl font-black font-heading mb-6 uppercase tracking-widest border-b border-white/10 pb-4 text-white">Specifications</h3>
                 
                 <ul className="space-y-6">

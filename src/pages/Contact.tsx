@@ -11,7 +11,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative z-10 text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter mb-4"
+          className="relative z-10 text-3xl sm:text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter mb-4"
         >
           Contact <span className="text-gradient-cyan">Us</span>
         </motion.h1>
@@ -22,13 +22,13 @@ export default function Contact() {
       </section>
 
       {/* Contact Content */}
-      <section className="py-24">
+      <section className="py-12 sm:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center text-center">
             
             {/* Contact Information */}
             <div className="w-full">
-              <h2 className="text-3xl md:text-4xl font-black font-heading mb-6 uppercase tracking-wide">Get in <span className="text-[#ffea00]">Touch</span></h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black font-heading mb-6 uppercase tracking-wide">Get in <span className="text-[#ffea00]">Touch</span></h2>
               <div className="w-16 h-1 bg-[#ffea00] mb-8 mx-auto"></div>
               <p className="text-gray-400 mb-12 leading-relaxed text-lg font-light max-w-2xl mx-auto">
                 We are always open to discussing new projects, creative ideas or opportunities to be part of your visions.

@@ -3,17 +3,17 @@ import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-react
 
 export default function Footer() {
   return (
-    <footer className="bg-[#050505] text-white pt-24 pb-12 border-t border-white/5 relative overflow-hidden">
+    <footer className="bg-[#050505] text-white pt-16 pb-12 border-t border-white/5 relative overflow-hidden">
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[#00f0ff] to-transparent opacity-20"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 mb-24">
           {/* Brand */}
           <div className="md:col-span-5">
-            <Link to="/" className="text-3xl font-black font-heading tracking-tighter text-white uppercase mb-8 block">
+            <Link to="/" className="text-2xl sm:text-3xl font-black font-heading tracking-tighter text-white uppercase mb-8 block">
               PRABHAKAR<span className="text-[#00f0ff]">.</span>
             </Link>
-            <p className="text-gray-400 text-lg leading-relaxed mb-10 font-light max-w-md">
+            <p className="text-gray-400 text-base sm:text-lg leading-relaxed mb-10 font-light max-w-md">
               Redefining the architectural landscape through innovation, precision, and a commitment to sustainable excellence.
             </p>
             <div className="flex space-x-6">

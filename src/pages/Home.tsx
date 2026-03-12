@@ -152,7 +152,7 @@ export default function Home() {
       </section>
 
       {/* Services Overview */}
-      <section className="py-16 sm:py-32 relative">
+      <section className="py-12 sm:py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
             <div className="max-w-2xl">
@@ -201,7 +201,7 @@ export default function Home() {
       </section>
 
       {/* Featured Projects */}
-      <section className="py-16 sm:py-32 bg-[#111]">
+      <section className="py-12 sm:py-32 bg-[#111]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div>
@@ -332,7 +332,7 @@ export default function Home() {
       </section>
 
       {/* Map Section */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-12 sm:py-32 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <ProjectMap />
         </div>
@@ -437,7 +437,7 @@ export default function Home() {
       </section>
 
       {/* About Preview */}
-      <section className="py-16 sm:py-32 relative">
+      <section className="py-12 sm:py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-16 items-center">
             <div className="w-full md:w-1/2 relative">
@@ -449,13 +449,13 @@ export default function Home() {
               />
             </div>
             <div className="w-full md:w-1/2">
-              <h2 className="text-3xl md:text-5xl font-black font-heading mb-6 sm:mb-8 uppercase tracking-tighter">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-black font-heading mb-6 sm:mb-8 uppercase tracking-tighter leading-none">
                 Designing the <span className="text-gradient-cyan">Future</span>
               </h2>
-              <p className="text-gray-400 mb-6 leading-relaxed text-lg">
+              <p className="text-gray-400 mb-6 leading-relaxed text-base sm:text-lg">
                 At Prabhakar Associates, we believe that architecture is more than just creating buildings; it's about shaping environments that inspire, function seamlessly, and stand the test of time.
               </p>
-              <p className="text-gray-400 mb-10 leading-relaxed text-lg">
+              <p className="text-gray-400 mb-10 leading-relaxed text-base sm:text-lg">
                 With a focus on modern, functional design, our team of passionate architects and planners work closely with clients to turn visions into reality, ensuring every detail is meticulously crafted.
               </p>
               <Link to="/about" className="inline-block glass-panel px-8 py-4 uppercase tracking-widest font-bold hover:bg-white hover:text-black transition-all border border-white/20">
